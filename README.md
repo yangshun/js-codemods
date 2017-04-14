@@ -16,6 +16,32 @@ comparison.
 
 ### Included Scripts
 
+#### `jsx-conditional-rendering-operator`
+
+Transforms JSX inline If-Else with conditional operator rendering into inline if with logical `&&` operator rendering.
+
+```sh
+jscodeshift -t js-codemods/transforms/jsx-conditional-rendering-operator.js <file>
+```
+
+**Before**:
+
+```html
+<div>
+  {this.state.showAlert ? <Alert /> : null}
+  {this.state.hideAlert ? null : <Alert />}
+</div>
+```
+
+**After**:
+
+```html
+<div>
+  {this.state.showAlert && <Alert />}
+  {!this.state.hideAlert && <Alert />}
+</div>
+```
+
 #### `jsxattribute-expression-to-literal`
 
 Transforms JSX attribute values which are string literals wrapped within `JSXExpressionContainers` to just the string literal itself.
