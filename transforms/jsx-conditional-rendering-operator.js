@@ -1,5 +1,5 @@
 function isEmptyRender(node) {
-  return node.type === 'Literal' && (node.value == null || node.value == false);
+  return node.type === 'Literal' && (node.value == null || node.value === false);
 }
 
 function hasAncestorOfType(node, type) {
@@ -19,7 +19,7 @@ function transformer(fileInfo, api) {
   const collection = j(fileInfo.source)
     .find(j.ConditionalExpression)
     .filter(path => hasAncestorOfType(path, 'JSXExpressionContainer'));
-  // It is important that nested nodes get processed first, else, when outer nodes
+  // It is important that nested nodes get processed first, or else when outer nodes
   // get transformed, the paths to the inner nodes get changed and they do not get transformed.
   // Hence we sort by reversed order of appearance in the code.
   const sortedCollection = j(collection.paths()
