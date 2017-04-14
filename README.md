@@ -59,5 +59,5 @@ jscodeshift -t js-codemods/transforms/jsxattribute-expression-to-literal.js <fil
 **After**:
 
 ```jsx
-<Foo header="Lorem Ipsum" message='dolor sit amet' />
+<Foo header="Lorem Ipsum" message="dolor sit amet" />
 ```
