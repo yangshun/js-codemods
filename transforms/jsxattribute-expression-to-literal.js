@@ -1,7 +1,7 @@
-function transformer(file, api) {
+function transformer(fileInfo, api) {
   const j = api.jscodeshift;
 
-  return j(file.source)
+  return j(fileInfo.source)
     .find(j.JSXExpressionContainer)
     .filter(path => path.parent.node.type === 'JSXAttribute')
     .forEach(path => {
