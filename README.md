@@ -26,7 +26,7 @@ jscodeshift -t js-codemods/transforms/jsx-conditional-rendering-operator.js <fil
 
 **Before**:
 
-```html
+```jsx
 <div>
   {this.state.showAlert ? <Alert /> : null}
   {this.state.hideAlert ? null : <Alert />}
@@ -35,7 +35,7 @@ jscodeshift -t js-codemods/transforms/jsx-conditional-rendering-operator.js <fil
 
 **After**:
 
-```html
+```jsx
 <div>
   {this.state.showAlert && <Alert />}
   {!this.state.hideAlert && <Alert />}
@@ -52,12 +52,12 @@ jscodeshift -t js-codemods/transforms/jsxattribute-expression-to-literal.js <fil
 
 **Before**:
 
-```html
+```jsx
 <Foo header={"Lorem Ipsum"} message={'dolor sit amet'} />
 ```
 
 **After**:
 
-```html
+```jsx
 <Foo header="Lorem Ipsum" message='dolor sit amet' />
 ```
