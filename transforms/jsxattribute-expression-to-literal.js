@@ -7,6 +7,10 @@ function transformer(fileInfo, api) {
     .forEach(path => {
       if (path.node.expression.type === 'Literal' &&
         typeof path.node.expression.value === 'string') {
+        // Skip if string contains double quotes within.
+        if (/^["'].*".*["']$/.test(path.node.expression.raw)) {
+          return;
+        }
         path.node.expression.raw = path.node.expression.raw.replace(/'/g, '\"');
         j(path).replaceWith(path.node.expression);
       }

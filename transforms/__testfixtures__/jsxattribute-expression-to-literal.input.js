@@ -3,10 +3,13 @@ class Foo extends Component {
     return (
       <div>
         <Foo
-          header={"Lorem Ipsum"}
-          message={'dolor sit amet'}
+          prop1={"Lorem Ipsum"}
+          prop2={'Lorem Ipsum'}
+          prop3={"Lorem 'Ipsum"}
+          prop4={'Lorem "Ipsum'}
+          prop5={'Lorem \'Ipsum'}
+          prop6={"Lorem \"Ipsum"}
         />
-        <Foo header={"Lorem Ipsum"} message={'dolor sit amet'} />
       </div>
     )
   }
